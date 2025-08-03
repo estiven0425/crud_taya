@@ -2,17 +2,16 @@ module.exports = {
   apps: [
     {
       name: "crud-express",
-      script: "src/index.ts",
+      script: "./dist/index.js",
       watch: true,
-      interpreter: "ts-node",
-      node_args: "--loader ts-node/esm",
+      interpreter: "node",
       env_development: {
         NODE_ENV: "development",
-        PORT: 3000,
+        PORT: 3001,
       },
       env_production: {
         NODE_ENV: "production",
-        PORT: 3000,
+        PORT: 3001,
       },
     },
   ],

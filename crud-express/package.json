@@ -2,13 +2,15 @@
   "name": "crud-express",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "pm2 start ecosystem.config.cjs --env development",
-    "dev:reset": "pm2 delete all && pm2 start ecosystem.config.cjs --env development",
+    "dev": "tsx src/index.ts",
+    "dev:reset": "pm2 delete crud-express && pm2 start ecosystem.config.cjs --env development",
     "build": "tsc",
-    "start": "pm2 start ecosystem.config.cjs --env production",
-    "stop": "pm2 stop crud-express"
+    "start": "npm run build && pm2 start ecosystem.config.cjs --env production",
+    "stop": "pm2 stop crud-express",
+    "log": "pm2 log crud-express",
+    "status": "pm2 status crud-express"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "mysql2": "^3.14.3",
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
@@ -25,6 +28,7 @@
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
     "typescript": "^5.9.2"
   }
 }

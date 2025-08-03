@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database";
+import { sequelize } from "../config/database.js";
 
 const PresupuestoComercial = sequelize.define(
   "presupuesto_comercial",

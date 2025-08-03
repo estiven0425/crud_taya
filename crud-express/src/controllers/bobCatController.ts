@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import BobCats from "../models/BobCats";
+import BobCats from "../models/BobCats.js";
 
 export const getBobCats = async (_req: Request, res: Response) => {
   const bobCats = await BobCats.findAll({
@@ -32,4 +32,17 @@ export const updateBobCats = async (req: Request, res: Response) => {
   await bobCat.save();
 
   res.json(bobCat);
+};
+
+export const deleteBobCats = async (req: Request, res: Response) => {
+  const { id_bob_cat } = req.params;
+
+  const bobCat = await BobCats.findByPk(id_bob_cat);
+
+  if (!bobCat)
+    return res.status(404).json({ message: "Bob Cat no encontrado" });
+
+  await bobCat.destroy();
+
+  res.json({ message: `Bob Cat con ${id_bob_cat} eliminado` });
 };

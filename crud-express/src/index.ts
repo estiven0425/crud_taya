@@ -1,8 +1,10 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import { dbConnection } from "./config/database";
-// import userRoutes from "./routes/userRoutes";
+
+import { dbConnection } from "./config/database.js";
+
+import bobCatRoutes from "./routes/bobCatRoutes.js";
 
 const app = express();
 const port = process.env.PORT!;
@@ -10,7 +12,7 @@ const port = process.env.PORT!;
 app.use(cors());
 app.use(express.json());
 
-// app.use("/api/users", userRoutes);
+app.use("/bob_cats", bobCatRoutes);
 
 dbConnection()
   .then(() => {

@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database";
-import Perfiles from "./Perfiles";
+import { sequelize } from "../config/database.js";
+import Perfiles from "./Perfiles.js";
 
 const Usuarios = sequelize.define(
   "usuarios",
