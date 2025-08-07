@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
+import Usuarios from "./Usuarios.js";
 
 const RegistrosAp = sequelize.define(
   "RegistrosAp",
@@ -107,5 +108,23 @@ const RegistrosAp = sequelize.define(
     timestamps: false,
   },
 );
+
+RegistrosAp.belongsTo(Usuarios, {
+  foreignKey: "titular_registro_ap",
+  targetKey: "id_usuario",
+  as: "titular",
+});
+
+RegistrosAp.belongsTo(Usuarios, {
+  foreignKey: "operador_registro_ap",
+  targetKey: "id_usuario",
+  as: "operador",
+});
+
+RegistrosAp.belongsTo(Usuarios, {
+  foreignKey: "carguero_registro_ap",
+  targetKey: "id_usuario",
+  as: "carguero",
+});
 
 export default RegistrosAp;

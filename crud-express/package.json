@@ -13,10 +13,11 @@
     "status": "pm2 status crud-express"
   },
   "keywords": [],
-  "author": "",
+  "author": "estiven0425",
   "license": "ISC",
-  "description": "",
+  "description": "CRUD para la base de datos de TALCOS de Yarumal",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
@@ -24,6 +25,7 @@
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",

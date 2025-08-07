@@ -35,7 +35,7 @@ export const updateBobCats = async (req: Request, res: Response) => {
 };
 
 export const deleteBobCats = async (req: Request, res: Response) => {
-  const { id_bob_cat } = req.params;
+  const { id_bob_cat } = req.body;
 
   const bobCat = await BobCats.findByPk(id_bob_cat);
 
@@ -44,5 +44,5 @@ export const deleteBobCats = async (req: Request, res: Response) => {
 
   await bobCat.destroy();
 
-  res.json({ message: `Bob Cat con ${id_bob_cat} eliminado` });
+  res.json({ message: `Bob Cat con id ${id_bob_cat} eliminado` });
 };
