@@ -1,0 +1,108 @@
+.home {
+  align-content: center;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+  height: 100%;
+  justify-content: space-between;
+  padding: 5px;
+  width: 100%;
+
+  .header {
+    align-items: center;
+    //noinspection SassScssResolvedByNameOnly
+    border-bottom: 1px solid color(border);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 10%;
+    justify-content: flex-end;
+    width: 100%;
+
+    h1 {
+      //noinspection SassScssResolvedByNameOnly
+      text-shadow: 0 0 50px color(text);
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+
+  .main {
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 80%;
+    justify-content: space-between;
+    width: 100%;
+
+    section {
+      align-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      height: 100%;
+      justify-content: center;
+      width: 50%;
+
+      a {
+        //noinspection SassScssResolvedByNameOnly
+        @include target(center, 150px, center, 25px, 250px);
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        //noinspection SassScssResolvedByNameOnly
+        text-shadow: 0 0 50px color(text);
+      }
+
+      a:focus,
+      a:hover {
+        //noinspection SassScssResolvedByNameOnly
+        background-color: color(cardHover);
+        outline: none;
+      }
+    }
+  }
+
+  .footer {
+    align-items: center;
+    //noinspection SassScssResolvedByNameOnly
+    border-top: 1px solid color(border);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 10%;
+    justify-content: space-around;
+    width: 100%;
+
+    p {
+      //noinspection SassScssResolvedByNameOnly
+      font-size: 1rem;
+      margin: 0;
+      text-align: center;
+      //noinspection SassScssResolvedByNameOnly
+      text-shadow: 0 0 50px color(text);
+      width: 300px;
+    }
+
+    span {
+      font-size: 0.75rem;
+    }
+
+    a {
+      @extend p;
+      text-decoration: none;
+    }
+
+    a:focus,
+    a:hover {
+      text-decoration: underline;
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "variable" as *;
+
+@function color($key, $subkey: null) {
+  @if $subkey == null {
+    @return map.get($colors, $key);
+  } @else {
+    @return map.get(map.get($colors, $key), $subkey);
+  }
+}

@@ -1,0 +1,28 @@
+@use "function" as *;
+
+@mixin target($align, $height, $justify, $radius, $width) {
+  align-content: $align;
+  //noinspection SassScssResolvedByNameOnly
+  background-color: color(card);
+  border-radius: $radius;
+  box-shadow:
+    1px 1px 20px 1px #fdf7ec7f inset,
+    0px 0px 20px 1px #fdf7ec7f inset;
+  color: color(text);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: $height;
+  justify-content: $justify;
+  padding: 5px;
+  width: $width;
+}
+
+@mixin action($align, $color, $height, $justify, $radius, $width) {
+  @include target($align, $height, $justify, $radius, $width);
+  //noinspection SassScssResolvedByNameOnly
+  background-color: color(buttons, $color);
+}
+
+@mixin table() {
+}
