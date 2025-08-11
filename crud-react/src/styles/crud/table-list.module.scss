@@ -1,0 +1,191 @@
+.alternative {
+  align-content: center;
+  height: 100%;
+  width: 100%;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+  }
+}
+
+.confirm {
+  align-items: center;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: center;
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  article {
+    //noinspection SassScssResolvedByNameOnly
+    @include target(center, auto, space-between, 20px, auto);
+    align-items: center;
+    gap: 10px;
+    min-height: 200px;
+    padding: 20px;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+      text-align: center;
+    }
+
+    aside {
+      align-content: center;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      width: 100%;
+
+      button:first-child {
+        //noinspection SassScssResolvedByNameOnly
+        @include action(center, confirm, 50px, center, 25px, 150px);
+        border: none;
+        cursor: pointer;
+        //noinspection SassScssResolvedByNameOnly
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: auto;
+        text-align: center;
+        text-decoration: none;
+        //noinspection SassScssResolvedByNameOnly
+        text-shadow: 0 0 50px color(text);
+      }
+
+      button:first-child:focus,
+      button:first-child:hover {
+        //noinspection SassScssResolvedByNameOnly
+        background-color: color(buttons, confirmHover);
+        outline: none;
+      }
+
+      button:last-child {
+        //noinspection SassScssResolvedByNameOnly
+        @include action(center, cancel, 50px, center, 25px, 150px);
+        border: none;
+        cursor: pointer;
+        //noinspection SassScssResolvedByNameOnly
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: auto;
+        text-align: center;
+        text-decoration: none;
+        //noinspection SassScssResolvedByNameOnly
+        text-shadow: 0 0 50px color(text);
+      }
+
+      button:last-child:focus,
+      button:last-child:hover {
+        //noinspection SassScssResolvedByNameOnly
+        background-color: color(buttons, cancelHover);
+        outline: none;
+      }
+    }
+  }
+}
+
+.table {
+  border-collapse: collapse;
+  height: 0;
+  width: 100%;
+
+  .thead {
+    //noinspection SassScssResolvedByNameOnly
+    background-color: color(card);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    box-shadow:
+      1px 1px 10px 1px #fdf7ec7f inset,
+      0 0 10px 1px #fdf7ec7f inset;
+    position: sticky;
+    top: 0;
+
+    tr {
+      th {
+        font-size: 1rem;
+        padding: 5px 10px;
+        text-align: center;
+      }
+
+      th:first-child {
+        border-radius: 25px 0 0 25px;
+      }
+      th:last-child {
+        border-radius: 0 25px 25px 0;
+      }
+    }
+  }
+
+  .tbody {
+    tr {
+      //noinspection SassScssResolvedByNameOnly
+      border-bottom: 1px solid color(border);
+
+      td {
+        font-size: 1rem;
+        padding: 5px 10px;
+        text-align: center;
+      }
+
+      .tbodyButtons {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 5px;
+        height: 100%;
+        justify-content: space-around;
+
+        .edit {
+          //noinspection SassScssResolvedByNameOnly
+          @include action(center, edit, 25px, center, 15px, 75px);
+          border: none;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          cursor: pointer;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .edit:focus,
+        .edit:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(buttons, editHover);
+          outline: none;
+        }
+
+        .delete {
+          //noinspection SassScssResolvedByNameOnly
+          @include action(center, delete, 25px, center, 15px, 75px);
+          border: none;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          cursor: pointer;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .delete:focus,
+        .delete:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(buttons, deleteHover);
+          outline: none;
+        }
+      }
+    }
+  }
+}

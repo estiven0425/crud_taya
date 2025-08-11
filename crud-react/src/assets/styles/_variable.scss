@@ -1,5 +1,3 @@
-@use "sass:color";
-
 $colors: (
   border: #ffffff,
   buttons: (
@@ -7,19 +5,16 @@ $colors: (
     cancelHover: #dc3545,
     confirm: #28a745bf,
     confirmHover: #28a745,
-    create: #28a745,
-    createHover: color.adjust(#28a745, $lightness: -10%),
-    delete: #dc3545,
-    deleteHover: color.adjust(#dc3545, $lightness: -10%),
-    edit: #007bff,
-    editHover: color.adjust(#007bff, $lightness: -10%),
+    create: #28a745bf,
+    createHover: #28a745,
+    delete: #dc3545bf,
+    deleteHover: #dc3545,
+    edit: #007bffbf,
+    editHover: #007bff,
   ),
   card: #fafafa00,
-  cardHover: #fafafa1a,
+  cardHover: #fafafa3f,
   item: #c8c8c8,
-  itemHover: color.adjust(#c8c8c8, $lightness: -10%),
-  itemAlternative: #fafafa,
-  itemAlternativeHover: color.adjust(#fafafa, $lightness: -10%),
   text: #fafafa,
   textAlternative: #050505,
 );

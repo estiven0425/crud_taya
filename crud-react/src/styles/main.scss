@@ -8,6 +8,22 @@
   transition: all 0.25s ease-in-out;
 }
 
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  //noinspection SassScssResolvedByNameOnly
+  background: color(card);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  //noinspection SassScssResolvedByNameOnly
+  background: color(cardHover);
+  border-radius: 10px;
+}
+
 html {
   font-size: 16px;
 }
