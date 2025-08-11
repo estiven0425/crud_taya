@@ -137,6 +137,28 @@
         font-size: 1rem;
         padding: 5px 10px;
         text-align: center;
+
+        input {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(card);
+          backdrop-filter: blur(10px);
+          border-radius: 10px;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          border: none;
+          font-size: 1rem;
+          padding: 0 10px;
+          text-align: center;
+          width: 100%;
+        }
+
+        input:focus,
+        input:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(cardHover);
+          outline: none;
+        }
       }
 
       .tbodyButtons {
@@ -150,7 +172,7 @@
 
         .edit {
           //noinspection SassScssResolvedByNameOnly
-          @include action(center, edit, 25px, center, 15px, 75px);
+          @include action(center, edit, 25px, center, 15px, 90px);
           border: none;
           box-shadow:
             1px 1px 10px 1px #fdf7ec7f inset,
@@ -169,7 +191,7 @@
 
         .delete {
           //noinspection SassScssResolvedByNameOnly
-          @include action(center, delete, 25px, center, 15px, 75px);
+          @include action(center, delete, 25px, center, 15px, 90px);
           border: none;
           box-shadow:
             1px 1px 10px 1px #fdf7ec7f inset,
@@ -184,6 +206,49 @@
           //noinspection SassScssResolvedByNameOnly
           background-color: color(buttons, deleteHover);
           outline: none;
+        }
+
+        .buttonConfirm {
+          //noinspection SassScssResolvedByNameOnly
+          @include action(center, confirm, 25px, center, 15px, 90px);
+          border: none;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          cursor: pointer;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .buttonConfirm:focus,
+        .buttonConfirm:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(buttons, confirmHover);
+          outline: none;
+        }
+
+        .buttonCancel {
+          //noinspection SassScssResolvedByNameOnly
+          @include action(center, cancel, 25px, center, 15px, 90px);
+          border: none;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          cursor: pointer;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .buttonCancel:focus,
+        .buttonCancel:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(buttons, cancelHover);
+          outline: none;
+        }
+
+        button:disabled {
+          pointer-events: none;
+          filter: blur(1px);
         }
       }
     }

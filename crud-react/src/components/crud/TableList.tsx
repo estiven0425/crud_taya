@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Style from "../../styles/crud/table-list.module.scss";
 
@@ -15,7 +14,10 @@ export function TableList({ url }: TableListProps) {
     unknown
   > | null>(null);
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
-  const navigate = useNavigate();
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [editedItem, setEditedItem] = useState<Record<string, unknown> | null>(
+    null,
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -56,8 +58,14 @@ export function TableList({ url }: TableListProps) {
 
   function handleEdit(item: Record<string, unknown>) {
     setSelectedItem(item);
+    setEditedItem({ ...item });
+    setEditMode(true);
+  }
 
-    navigate(`/crud/table/edit_${url}`, { state: selectedItem });
+  function cancelEdit() {
+    setEditMode(false);
+    setEditedItem(null);
+    setSelectedItem(null);
   }
 
   function handleDelete(item: Record<string, unknown>) {
@@ -77,6 +85,52 @@ export function TableList({ url }: TableListProps) {
     }
 
     return null;
+  }
+
+  function getInputType(value: unknown): string {
+    if (typeof value !== "string") return "text";
+
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    const timeRegex = /^\d{2}:\d{2}:\d{2}$/;
+    const floatRegex = /^[+-]?\d+([.,]\d+)?$/;
+    const numberRegex = /^\d+$/;
+    const hasLetters = /[a-zA-Z]/.test(value);
+
+    if (dateRegex.test(value)) return "date";
+    if (timeRegex.test(value)) return "time";
+    if (hasLetters) return "text";
+    if (floatRegex.test(value)) return "number";
+    if (numberRegex.test(value)) return "number";
+
+    return "text";
+  }
+
+  async function confirmEdit() {
+    if (!editedItem) return;
+
+    const idEntry = getItemIdEntry(editedItem);
+
+    if (!idEntry) return;
+
+    const [idKey, idValue] = idEntry;
+
+    try {
+      await axios.put(`${apiUrl}/${url}`, editedItem);
+
+      setData((prev) =>
+        prev.map((item) => {
+          const entry = getItemIdEntry(item);
+
+          return entry && entry[1] === idValue ? editedItem : item;
+        }),
+      );
+    } catch (error) {
+      console.error(`Error al actualizar el registro: ${idKey}` + error);
+    } finally {
+      setEditMode(false);
+      setEditedItem(null);
+      setSelectedItem(null);
+    }
   }
 
   async function confirmDelete() {
@@ -103,13 +157,17 @@ export function TableList({ url }: TableListProps) {
           return !entry || entry[1] !== idValue;
         }),
       );
-    } catch (err) {
-      console.error("Error al eliminar el registro:", err);
+    } catch (error) {
+      console.error("Error al eliminar el registro:" + error);
     } finally {
       setShowConfirm(false);
       setSelectedItem(null);
     }
   }
+
+  const actualizacionIndex = headers.findIndex((key) =>
+    key.startsWith("actualizacion_"),
+  );
 
   return (
     <>
@@ -131,49 +189,127 @@ export function TableList({ url }: TableListProps) {
                     {key}
                   </th>
                 ))}
-                <th role="columnheader" aria-label="Acciones"></th>
+                <th role="columnheader" aria-label="Acciones">
+                  Acciones
+                </th>
               </tr>
             </thead>
             <tbody className={Style.tbody}>
-              {data.map((row, index) => (
-                <tr key={index} role="row">
-                  {headers.map((key) => (
-                    <td key={key} role="cell">
-                      {row[key] === null || row[key] === ""
-                        ? "null"
-                        : typeof row[key] === "boolean"
-                          ? row[key]
-                            ? "True"
-                            : "False"
-                          : typeof row[key] === "object"
-                            ? extractDisplayValue(
+              {data.map((row, index) => {
+                const isEditing = editMode && selectedItem === row;
+                const isOtherRowDisabled = editMode && selectedItem !== row;
+
+                return (
+                  <tr key={index} role="row">
+                    {headers.map((key, i) => {
+                      const isEditable =
+                        !key.startsWith("id_") &&
+                        !key.startsWith("actualizacion_") &&
+                        !key.startsWith("actividad_") &&
+                        !key.startsWith("contrasena_") &&
+                        (actualizacionIndex === -1 || i < actualizacionIndex);
+
+                      const value = isEditing ? editedItem?.[key] : row[key];
+
+                      return (
+                        <AnimatePresence key={key}>
+                          <motion.td
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            initial={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            role="cell"
+                          >
+                            {isEditing && isEditable ? (
+                              <motion.input
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                initial={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                title={getInputType(String(value))}
+                                type={getInputType(String(value))}
+                                value={
+                                  value !== null && value !== undefined
+                                    ? String(value)
+                                    : ""
+                                }
+                                onChange={(e) =>
+                                  setEditedItem((prev) =>
+                                    prev
+                                      ? { ...prev, [key]: e.target.value }
+                                      : prev,
+                                  )
+                                }
+                              />
+                            ) : row[key] === null || row[key] === "" ? (
+                              "null"
+                            ) : typeof row[key] === "boolean" ? (
+                              row[key] ? (
+                                "True"
+                              ) : (
+                                "False"
+                              )
+                            ) : typeof row[key] === "object" ? (
+                              extractDisplayValue(
                                 row[key] as Record<string, unknown>,
                               )
-                            : String(row[key])}
+                            ) : (
+                              String(row[key])
+                            )}
+                          </motion.td>
+                        </AnimatePresence>
+                      );
+                    })}
+                    <td className={Style.tbodyButtons} role="cell">
+                      {editMode && selectedItem === row ? (
+                        <>
+                          <button
+                            aria-label="Confirmar edición"
+                            className={Style.buttonConfirm}
+                            onClick={confirmEdit}
+                            title="Confirmar edición"
+                            type="button"
+                          >
+                            Confirmar
+                          </button>
+                          <button
+                            aria-label="Cancelar edición"
+                            className={Style.buttonCancel}
+                            onClick={cancelEdit}
+                            title="Cancelar edición"
+                            type="button"
+                          >
+                            Cancelar
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            aria-label="Editar registro"
+                            className={Style.edit}
+                            onClick={() => handleEdit(row)}
+                            title="Editar registro"
+                            type="button"
+                            disabled={isOtherRowDisabled}
+                          >
+                            Editar
+                          </button>
+                          <button
+                            aria-label="Eliminar registro"
+                            className={Style.delete}
+                            onClick={() => handleDelete(row)}
+                            title="Eliminar registro"
+                            type="button"
+                            disabled={isOtherRowDisabled}
+                          >
+                            Eliminar
+                          </button>
+                        </>
+                      )}
                     </td>
-                  ))}
-                  <td className={Style.tbodyButtons} role="cell">
-                    <button
-                      aria-label="Editar registro"
-                      className={Style.edit}
-                      onClick={() => handleEdit(row)}
-                      title="Editar registro"
-                      type="button"
-                    >
-                      Editar
-                    </button>
-                    <button
-                      aria-label="Eliminar registro"
-                      className={Style.delete}
-                      onClick={() => handleDelete(row)}
-                      title="Eliminar registro"
-                      type="button"
-                    >
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           <AnimatePresence>
