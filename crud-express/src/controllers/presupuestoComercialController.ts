@@ -16,13 +16,10 @@ export const createPresupuestoComercial = async (
   req: Request,
   res: Response,
 ) => {
-  const { fecha_presupuesto_comercial, capacidad_presupuesto_comercial } =
+  const item =
     req.body;
 
-  const nuevoPresupuestoComercial = await PresupuestoComercial.create({
-    fecha_presupuesto_comercial,
-    capacidad_presupuesto_comercial,
-  });
+  const nuevoPresupuestoComercial = await PresupuestoComercial.create(item);
 
   res.status(201).json(nuevoPresupuestoComercial);
 };

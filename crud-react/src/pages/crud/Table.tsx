@@ -15,7 +15,7 @@ export function Table() {
   const { url, name } = information;
 
   const redirect = (): void => {
-    navigate("/crud/table/create", { state: url });
+    navigate("/crud/create", { state: { url: url, name: name } });
   };
 
   return (
@@ -30,6 +30,7 @@ export function Table() {
           aria-label={`Crear nuevo registro de ${name}`}
           onClick={() => redirect()}
           title={`Crear nuevo registro de ${name}`}
+          type="button"
         >
           Crear {name}
         </button>

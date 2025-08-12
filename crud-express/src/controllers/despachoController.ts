@@ -10,12 +10,9 @@ export const getDespachos = async (_req: Request, res: Response) => {
 };
 
 export const createDespacho = async (req: Request, res: Response) => {
-  const { fecha_despacho, cantidad_despacho } = req.body;
+  const item = req.body;
 
-  const nuevoDespacho = await Despachos.create({
-    fecha_despacho,
-    cantidad_despacho,
-  });
+  const nuevoDespacho = await Despachos.create(item);
 
   res.status(201).json(nuevoDespacho);
 };

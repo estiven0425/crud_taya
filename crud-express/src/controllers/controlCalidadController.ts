@@ -10,29 +10,9 @@ export const getControlesCalidad = async (_req: Request, res: Response) => {
 };
 
 export const createControlCalidad = async (req: Request, res: Response) => {
-  const {
-    fecha_control_calidad,
-    hora_control_calidad,
-    turno_control_calidad,
-    molino_control_calidad,
-    referencia_control_calidad,
-    bulto_control_calidad,
-    retencion_control_calidad,
-    rechazado_control_calidad,
-    observacion_control_calidad,
-  } = req.body;
+  const item = req.body;
 
-  const nuevoControlCalidad = await ControlCalidad.create({
-    fecha_control_calidad,
-    hora_control_calidad,
-    turno_control_calidad,
-    molino_control_calidad,
-    referencia_control_calidad,
-    bulto_control_calidad,
-    retencion_control_calidad,
-    rechazado_control_calidad,
-    observacion_control_calidad,
-  });
+  const nuevoControlCalidad = await ControlCalidad.create(item);
 
   res.status(201).json(nuevoControlCalidad);
 };

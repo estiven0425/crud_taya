@@ -1,4 +1,4 @@
-.alternative {
+.tableListAlternative {
   align-content: center;
   height: 100%;
   width: 100%;
@@ -11,7 +11,165 @@
   }
 }
 
-.confirm {
+.tableList {
+  border-collapse: collapse;
+  height: 0;
+  width: 100%;
+
+  .thead {
+    //noinspection SassScssResolvedByNameOnly
+    background-color: color(card);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    box-shadow:
+      1px 1px 10px 1px #fdf7ec7f inset,
+      0 0 10px 1px #fdf7ec7f inset;
+    position: sticky;
+    top: 0;
+
+    tr {
+      th {
+        font-size: 1rem;
+        padding: 5px 10px;
+        text-align: center;
+      }
+
+      th:first-child {
+        border-radius: 25px 0 0 25px;
+      }
+      th:last-child {
+        border-radius: 0 25px 25px 0;
+      }
+    }
+  }
+
+  .tbody {
+    tr {
+      //noinspection SassScssResolvedByNameOnly
+      border-bottom: 1px solid color(border);
+
+      td {
+        font-size: 1rem;
+        padding: 5px 10px;
+        text-align: center;
+
+        input {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(card);
+          backdrop-filter: blur(10px);
+          border-radius: 10px;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          border: none;
+          font-size: 1rem;
+          padding: 0 10px;
+          text-align: center;
+          width: 100%;
+        }
+
+        input:focus,
+        input:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(cardHover);
+          outline: none;
+        }
+      }
+
+      .buttons {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 5px;
+        height: 100%;
+        justify-content: space-around;
+
+        .edit {
+          //noinspection SassScssResolvedByNameOnly
+          @include action(center, edit, 25px, center, 15px, 90px);
+          border: none;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          cursor: pointer;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .edit:focus,
+        .edit:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(buttons, editHover);
+          outline: none;
+        }
+
+        .delete {
+          //noinspection SassScssResolvedByNameOnly
+          @include action(center, delete, 25px, center, 15px, 90px);
+          border: none;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          cursor: pointer;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .delete:focus,
+        .delete:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(buttons, deleteHover);
+          outline: none;
+        }
+
+        .confirm {
+          //noinspection SassScssResolvedByNameOnly
+          @include action(center, confirm, 25px, center, 15px, 90px);
+          border: none;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          cursor: pointer;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .confirm:focus,
+        .confirm:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(buttons, confirmHover);
+          outline: none;
+        }
+
+        .cancel {
+          //noinspection SassScssResolvedByNameOnly
+          @include action(center, cancel, 25px, center, 15px, 90px);
+          border: none;
+          box-shadow:
+            1px 1px 10px 1px #fdf7ec7f inset,
+            0 0 10px 1px #fdf7ec7f inset;
+          cursor: pointer;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .cancel:focus,
+        .cancel:hover {
+          //noinspection SassScssResolvedByNameOnly
+          background-color: color(buttons, cancelHover);
+          outline: none;
+        }
+
+        button:disabled {
+          pointer-events: none;
+          filter: blur(1px);
+        }
+      }
+    }
+  }
+}
+.showConfirm {
   align-items: center;
   backdrop-filter: blur(10px);
   display: flex;
@@ -91,165 +249,6 @@
         //noinspection SassScssResolvedByNameOnly
         background-color: color(buttons, cancelHover);
         outline: none;
-      }
-    }
-  }
-}
-
-.table {
-  border-collapse: collapse;
-  height: 0;
-  width: 100%;
-
-  .thead {
-    //noinspection SassScssResolvedByNameOnly
-    background-color: color(card);
-    backdrop-filter: blur(10px);
-    border-radius: 25px;
-    box-shadow:
-      1px 1px 10px 1px #fdf7ec7f inset,
-      0 0 10px 1px #fdf7ec7f inset;
-    position: sticky;
-    top: 0;
-
-    tr {
-      th {
-        font-size: 1rem;
-        padding: 5px 10px;
-        text-align: center;
-      }
-
-      th:first-child {
-        border-radius: 25px 0 0 25px;
-      }
-      th:last-child {
-        border-radius: 0 25px 25px 0;
-      }
-    }
-  }
-
-  .tbody {
-    tr {
-      //noinspection SassScssResolvedByNameOnly
-      border-bottom: 1px solid color(border);
-
-      td {
-        font-size: 1rem;
-        padding: 5px 10px;
-        text-align: center;
-
-        input {
-          //noinspection SassScssResolvedByNameOnly
-          background-color: color(card);
-          backdrop-filter: blur(10px);
-          border-radius: 10px;
-          box-shadow:
-            1px 1px 10px 1px #fdf7ec7f inset,
-            0 0 10px 1px #fdf7ec7f inset;
-          border: none;
-          font-size: 1rem;
-          padding: 0 10px;
-          text-align: center;
-          width: 100%;
-        }
-
-        input:focus,
-        input:hover {
-          //noinspection SassScssResolvedByNameOnly
-          background-color: color(cardHover);
-          outline: none;
-        }
-      }
-
-      .tbodyButtons {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 5px;
-        height: 100%;
-        justify-content: space-around;
-
-        .edit {
-          //noinspection SassScssResolvedByNameOnly
-          @include action(center, edit, 25px, center, 15px, 90px);
-          border: none;
-          box-shadow:
-            1px 1px 10px 1px #fdf7ec7f inset,
-            0 0 10px 1px #fdf7ec7f inset;
-          cursor: pointer;
-          font-size: 1rem;
-          text-align: center;
-        }
-
-        .edit:focus,
-        .edit:hover {
-          //noinspection SassScssResolvedByNameOnly
-          background-color: color(buttons, editHover);
-          outline: none;
-        }
-
-        .delete {
-          //noinspection SassScssResolvedByNameOnly
-          @include action(center, delete, 25px, center, 15px, 90px);
-          border: none;
-          box-shadow:
-            1px 1px 10px 1px #fdf7ec7f inset,
-            0 0 10px 1px #fdf7ec7f inset;
-          cursor: pointer;
-          font-size: 1rem;
-          text-align: center;
-        }
-
-        .delete:focus,
-        .delete:hover {
-          //noinspection SassScssResolvedByNameOnly
-          background-color: color(buttons, deleteHover);
-          outline: none;
-        }
-
-        .buttonConfirm {
-          //noinspection SassScssResolvedByNameOnly
-          @include action(center, confirm, 25px, center, 15px, 90px);
-          border: none;
-          box-shadow:
-            1px 1px 10px 1px #fdf7ec7f inset,
-            0 0 10px 1px #fdf7ec7f inset;
-          cursor: pointer;
-          font-size: 1rem;
-          text-align: center;
-        }
-
-        .buttonConfirm:focus,
-        .buttonConfirm:hover {
-          //noinspection SassScssResolvedByNameOnly
-          background-color: color(buttons, confirmHover);
-          outline: none;
-        }
-
-        .buttonCancel {
-          //noinspection SassScssResolvedByNameOnly
-          @include action(center, cancel, 25px, center, 15px, 90px);
-          border: none;
-          box-shadow:
-            1px 1px 10px 1px #fdf7ec7f inset,
-            0 0 10px 1px #fdf7ec7f inset;
-          cursor: pointer;
-          font-size: 1rem;
-          text-align: center;
-        }
-
-        .buttonCancel:focus,
-        .buttonCancel:hover {
-          //noinspection SassScssResolvedByNameOnly
-          background-color: color(buttons, cancelHover);
-          outline: none;
-        }
-
-        button:disabled {
-          pointer-events: none;
-          filter: blur(1px);
-        }
       }
     }
   }

@@ -10,17 +10,9 @@ export const getProductosRechazados = async (_req: Request, res: Response) => {
 };
 
 export const createProductoRechazado = async (req: Request, res: Response) => {
-  const {
-    nombre_producto_rechazado,
-    cantidad_producto_rechazado,
-    retencion_producto_rechazado,
-  } = req.body;
+  const item = req.body;
 
-  const nuevoProductoRechazado = await ProductosRechazados.create({
-    nombre_producto_rechazado,
-    cantidad_producto_rechazado,
-    retencion_producto_rechazado,
-  });
+  const nuevoProductoRechazado = await ProductosRechazados.create(item);
 
   res.status(201).json(nuevoProductoRechazado);
 };

@@ -74,6 +74,7 @@ export function List() {
             key={url}
             onClick={() => redirect(url, name)}
             title={`Ir al CRUD de ${label}`}
+            type="button"
           >
             {label}
           </button>

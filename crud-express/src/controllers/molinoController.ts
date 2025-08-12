@@ -10,12 +10,9 @@ export const getMolinos = async (_req: Request, res: Response) => {
 };
 
 export const createMolino = async (req: Request, res: Response) => {
-  const { nombre_molino, horometro_molino } = req.body;
+  const item = req.body;
 
-  const nuevoMolino = await Molinos.create({
-    nombre_molino,
-    horometro_molino,
-  });
+  const nuevoMolino = await Molinos.create(item);
 
   res.status(201).json(nuevoMolino);
 };

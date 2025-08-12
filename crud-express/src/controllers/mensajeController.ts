@@ -24,21 +24,9 @@ export const getMensajes = async (_req: Request, res: Response) => {
 };
 
 export const createMensaje = async (req: Request, res: Response) => {
-  const {
-    fecha_mensaje,
-    hora_mensaje,
-    texto_mensaje,
-    emisor_mensaje,
-    receptor_mensaje,
-  } = req.body;
+  const item = req.body;
 
-  const nuevoMensaje = await Mensajes.create({
-    fecha_mensaje,
-    hora_mensaje,
-    texto_mensaje,
-    emisor_mensaje,
-    receptor_mensaje,
-  });
+  const nuevoMensaje = await Mensajes.create(item);
 
   res.status(201).json(nuevoMensaje);
 };

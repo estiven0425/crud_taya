@@ -10,11 +10,9 @@ export const getPerfiles = async (_req: Request, res: Response) => {
 };
 
 export const createPerfil = async (req: Request, res: Response) => {
-  const { nombre_perfil } = req.body;
+  const item = req.body;
 
-  const nuevoPerfil = await Perfiles.create({
-    nombre_perfil,
-  });
+  const nuevoPerfil = await Perfiles.create(item);
 
   res.status(201).json(nuevoPerfil);
 };

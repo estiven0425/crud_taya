@@ -10,12 +10,9 @@ export const getMolinosAp = async (_req: Request, res: Response) => {
 };
 
 export const createMolinoAp = async (req: Request, res: Response) => {
-  const { nombre_molino_ap, horometro_molino_ap } = req.body;
+  const item = req.body;
 
-  const nuevoMolinoAp = await MolinosAp.create({
-    nombre_molino_ap,
-    horometro_molino_ap,
-  });
+  const nuevoMolinoAp = await MolinosAp.create(item);
 
   res.status(201).json(nuevoMolinoAp);
 };

@@ -172,25 +172,33 @@ export function TableList({ url }: TableListProps) {
   return (
     <>
       {loading ? (
-        <div className={Style.alternative} role="status" aria-live="polite">
+        <div
+          className={Style.tableListAlternative}
+          role="status"
+          aria-live="polite"
+        >
           <h2>Cargando...</h2>
         </div>
       ) : error ? (
-        <div className={Style.alternative} role="status" aria-live="polite">
+        <div
+          className={Style.tableListAlternative}
+          role="status"
+          aria-live="polite"
+        >
           <h2>{error}</h2>
         </div>
       ) : headers.length > 0 ? (
         <>
-          <table className={Style.table} role="table">
+          <table className={Style.tableList} role="table">
             <thead className={Style.thead}>
               <tr role="row">
                 {headers.map((key) => (
-                  <th key={key} scope="col" role="columnheader">
+                  <th key={key} role="columnheader" scope="col">
                     {key}
                   </th>
                 ))}
-                <th role="columnheader" aria-label="Acciones">
-                  Acciones
+                <th aria-label="Acciones" role="columnheader">
+                  acciones
                 </th>
               </tr>
             </thead>
@@ -217,28 +225,28 @@ export function TableList({ url }: TableListProps) {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             initial={{ opacity: 0 }}
-                            transition={{ duration: 0.5 }}
                             role="cell"
+                            transition={{ duration: 0.5 }}
                           >
                             {isEditing && isEditable ? (
                               <motion.input
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 initial={{ opacity: 0 }}
-                                transition={{ duration: 0.5 }}
-                                title={getInputType(String(value))}
-                                type={getInputType(String(value))}
-                                value={
-                                  value !== null && value !== undefined
-                                    ? String(value)
-                                    : ""
-                                }
                                 onChange={(e) =>
                                   setEditedItem((prev) =>
                                     prev
                                       ? { ...prev, [key]: e.target.value }
                                       : prev,
                                   )
+                                }
+                                title="Ingresa el nuevo valor o deja el actual"
+                                transition={{ duration: 0.5 }}
+                                type={getInputType(String(value))}
+                                value={
+                                  value !== null && value !== undefined
+                                    ? String(value)
+                                    : ""
                                 }
                               />
                             ) : row[key] === null || row[key] === "" ? (
@@ -260,12 +268,12 @@ export function TableList({ url }: TableListProps) {
                         </AnimatePresence>
                       );
                     })}
-                    <td className={Style.tbodyButtons} role="cell">
+                    <td className={Style.buttons} role="cell">
                       {editMode && selectedItem === row ? (
                         <>
                           <button
                             aria-label="Confirmar edición"
-                            className={Style.buttonConfirm}
+                            className={Style.confirm}
                             onClick={confirmEdit}
                             title="Confirmar edición"
                             type="button"
@@ -274,7 +282,7 @@ export function TableList({ url }: TableListProps) {
                           </button>
                           <button
                             aria-label="Cancelar edición"
-                            className={Style.buttonCancel}
+                            className={Style.cancel}
                             onClick={cancelEdit}
                             title="Cancelar edición"
                             type="button"
@@ -287,20 +295,20 @@ export function TableList({ url }: TableListProps) {
                           <button
                             aria-label="Editar registro"
                             className={Style.edit}
+                            disabled={isOtherRowDisabled}
                             onClick={() => handleEdit(row)}
                             title="Editar registro"
                             type="button"
-                            disabled={isOtherRowDisabled}
                           >
                             Editar
                           </button>
                           <button
                             aria-label="Eliminar registro"
                             className={Style.delete}
+                            disabled={isOtherRowDisabled}
                             onClick={() => handleDelete(row)}
                             title="Eliminar registro"
                             type="button"
-                            disabled={isOtherRowDisabled}
                           >
                             Eliminar
                           </button>
@@ -316,10 +324,10 @@ export function TableList({ url }: TableListProps) {
             {showConfirm && (
               <motion.section
                 animate={{ opacity: 1 }}
-                aria-labelledby="confirm-title"
                 aria-describedby="confirm-desc"
+                aria-labelledby="confirm-title"
                 aria-modal="true"
-                className={Style.confirm}
+                className={Style.showConfirm}
                 exit={{ opacity: 0 }}
                 initial={{ opacity: 0 }}
                 role="dialog"
@@ -351,7 +359,7 @@ export function TableList({ url }: TableListProps) {
           </AnimatePresence>
         </>
       ) : (
-        <div className={Style.alternative} role="status" aria-live="polite">
+        <div className={Style.tableListAlternative} role="status" aria-live="polite">
           <h2>No hay datos disponibles</h2>
         </div>
       )}

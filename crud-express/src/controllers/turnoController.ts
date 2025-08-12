@@ -10,13 +10,9 @@ export const getTurnos = async (_req: Request, res: Response) => {
 };
 
 export const createTurno = async (req: Request, res: Response) => {
-  const { nombre_turno, inicio_turno, fin_turno } = req.body;
+  const item = req.body;
 
-  const nuevoTurno = await Turnos.create({
-    nombre_turno,
-    inicio_turno,
-    fin_turno,
-  });
+  const nuevoTurno = await Turnos.create(item);
 
   res.status(201).json(nuevoTurno);
 };

@@ -31,47 +31,9 @@ export const getNovedades = async (_req: Request, res: Response) => {
 };
 
 export const createNovedad = async (req: Request, res: Response) => {
-  const {
-    fecha_novedad,
-    fecha_auxiliar_novedad,
-    hora_novedad,
-    turno_novedad,
-    tipo_novedad,
-    molino_novedad,
-    referencia_novedad,
-    bulto_novedad,
-    operador_novedad,
-    bob_cat_novedad,
-    carguero_novedad,
-    mecanico_novedad,
-    inicio_paro_novedad,
-    fin_paro_novedad,
-    horometro_inicio_paro_novedad,
-    horometro_fin_paro_novedad,
-    motivo_paro_novedad,
-    observacion_novedad,
-  } = req.body;
+  const item = req.body;
 
-  const nuevaNovedad = await Novedad.create({
-    fecha_novedad,
-    fecha_auxiliar_novedad,
-    hora_novedad,
-    turno_novedad,
-    tipo_novedad,
-    molino_novedad,
-    referencia_novedad,
-    bulto_novedad,
-    operador_novedad,
-    bob_cat_novedad,
-    carguero_novedad,
-    mecanico_novedad,
-    inicio_paro_novedad,
-    fin_paro_novedad,
-    horometro_inicio_paro_novedad,
-    horometro_fin_paro_novedad,
-    motivo_paro_novedad,
-    observacion_novedad,
-  });
+  const nuevaNovedad = await Novedad.create(item);
 
   res.status(201).json(nuevaNovedad);
 };

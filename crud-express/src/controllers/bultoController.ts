@@ -10,12 +10,9 @@ export const getBultos = async (_req: Request, res: Response) => {
 };
 
 export const createBultos = async (req: Request, res: Response) => {
-  const { nombre_bulto, capacidad_bulto } = req.body;
+  const item = req.body;
 
-  const nuevoBulto = await Bultos.create({
-    nombre_bulto,
-    capacidad_bulto,
-  });
+  const nuevoBulto = await Bultos.create(item);
 
   res.status(201).json(nuevoBulto);
 };

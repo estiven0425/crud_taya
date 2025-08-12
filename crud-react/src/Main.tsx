@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
+import { Create } from "./pages/crud/Create.tsx";
 import { Crud } from "./pages/crud/Crud.tsx";
 import { Home } from "./pages/home/Home.tsx";
 import { List } from "./pages/crud/List.tsx";
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")!).render(
         <Route element={<Crud />} path="crud">
           <Route element={<List />} path="list" />
           <Route element={<Table />} path="table" />
+          <Route element={<Create />} path="create" />
         </Route>
       </Routes>
     </BrowserRouter>

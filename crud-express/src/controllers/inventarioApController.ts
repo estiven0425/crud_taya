@@ -10,19 +10,9 @@ export const getInventarioAp = async (_req: Request, res: Response) => {
 };
 
 export const createInventarioAp = async (req: Request, res: Response) => {
-  const {
-    tipo_inventario_ap,
-    nombre_inventario_ap,
-    porcentaje_inventario_ap,
-    total_inventario_ap,
-  } = req.body;
+  const item = req.body;
 
-  const nuevoInventarioAp = await InventarioAp.create({
-    tipo_inventario_ap,
-    nombre_inventario_ap,
-    porcentaje_inventario_ap,
-    total_inventario_ap,
-  });
+  const nuevoInventarioAp = await InventarioAp.create(item);
 
   res.status(201).json(nuevoInventarioAp);
 };

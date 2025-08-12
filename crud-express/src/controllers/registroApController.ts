@@ -31,45 +31,9 @@ export const getRegistrosAp = async (_req: Request, res: Response) => {
 };
 
 export const createRegistroAp = async (req: Request, res: Response) => {
-  const {
-    fecha_registro_ap,
-    turno_registro_ap,
-    mes_registro_ap,
-    titular_registro_ap,
-    operador_registro_ap,
-    ingreso_roca_registro_ap,
-    bobcat_roca_registro_ap,
-    ingreso_grueso_registro_ap,
-    bobcat_grueso_registro_ap,
-    peso_bobcat_registro_ap,
-    total_roca_registro_ap,
-    total_grueso_registro_ap,
-    molino_registro_ap,
-    horometro_inicio_registro_ap,
-    horometro_fin_registro_ap,
-    carguero_registro_ap,
-    observacion_registro_ap,
-  } = req.body;
+  const item = req.body;
 
-  const nuevoRegistroAp = await RegistrosAp.create({
-    fecha_registro_ap,
-    turno_registro_ap,
-    mes_registro_ap,
-    titular_registro_ap,
-    operador_registro_ap,
-    ingreso_roca_registro_ap,
-    bobcat_roca_registro_ap,
-    ingreso_grueso_registro_ap,
-    bobcat_grueso_registro_ap,
-    peso_bobcat_registro_ap,
-    total_roca_registro_ap,
-    total_grueso_registro_ap,
-    molino_registro_ap,
-    horometro_inicio_registro_ap,
-    horometro_fin_registro_ap,
-    carguero_registro_ap,
-    observacion_registro_ap,
-  });
+  const nuevoRegistroAp = await RegistrosAp.create(item);
 
   res.status(201).json(nuevoRegistroAp);
 };

@@ -10,11 +10,9 @@ export const getBobCats = async (_req: Request, res: Response) => {
 };
 
 export const createBobCats = async (req: Request, res: Response) => {
-  const { nombre_bob_cat } = req.body;
+  const item = req.body;
 
-  const nuevoBobCat = await BobCats.create({
-    nombre_bob_cat,
-  });
+  const nuevoBobCat = await BobCats.create(item);
 
   res.status(201).json(nuevoBobCat);
 };

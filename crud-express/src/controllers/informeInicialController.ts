@@ -43,39 +43,9 @@ export const getInformesIniciales = async (_req: Request, res: Response) => {
 };
 
 export const createInformeInicial = async (req: Request, res: Response) => {
-  const {
-    titular_informe_inicial,
-    fecha_informe_inicial,
-    hora_informe_inicial,
-    turno_informe_inicial,
-    bob_cat_informe_inicial,
-    molino_informe_inicial,
-    referencia_informe_inicial,
-    bulto_informe_inicial,
-    horometro_informe_inicial,
-    operador_informe_inicial,
-    carguero_informe_inicial,
-    mecanico_informe_inicial,
-    cdc_informe_inicial,
-    observacion_informe_inicial,
-  } = req.body;
+  const item = req.body;
 
-  const nuevoInformeInicial = await InformeInicial.create({
-    titular_informe_inicial,
-    fecha_informe_inicial,
-    hora_informe_inicial,
-    turno_informe_inicial,
-    bob_cat_informe_inicial,
-    molino_informe_inicial,
-    referencia_informe_inicial,
-    bulto_informe_inicial,
-    horometro_informe_inicial,
-    operador_informe_inicial,
-    carguero_informe_inicial,
-    mecanico_informe_inicial,
-    cdc_informe_inicial,
-    observacion_informe_inicial,
-  });
+  const nuevoInformeInicial = await InformeInicial.create(item);
 
   res.status(201).json(nuevoInformeInicial);
 };

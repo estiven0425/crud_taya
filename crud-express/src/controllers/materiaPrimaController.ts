@@ -10,12 +10,9 @@ export const getMateriasPrimas = async (_req: Request, res: Response) => {
 };
 
 export const createMateriaPrima = async (req: Request, res: Response) => {
-  const { nombre_materia_prima, cantidad_materia_prima } = req.body;
+  const item = req.body;
 
-  const nuevaMateriaPrima = await MateriasPrimas.create({
-    nombre_materia_prima,
-    cantidad_materia_prima,
-  });
+  const nuevaMateriaPrima = await MateriasPrimas.create(item);
 
   res.status(201).json(nuevaMateriaPrima);
 };

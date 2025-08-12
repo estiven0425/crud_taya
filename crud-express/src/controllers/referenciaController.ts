@@ -10,14 +10,10 @@ export const getReferencias = async (_req: Request, res: Response) => {
 };
 
 export const createReferencia = async (req: Request, res: Response) => {
-  const { nombre_referencia, cantidad_referencia, cliente_referencia } =
+  const item =
     req.body;
 
-  const nuevaReferencia = await Referencias.create({
-    nombre_referencia,
-    cantidad_referencia,
-    cliente_referencia,
-  });
+  const nuevaReferencia = await Referencias.create(item);
 
   res.status(201).json(nuevaReferencia);
 };

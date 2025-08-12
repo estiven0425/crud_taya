@@ -10,29 +10,9 @@ export const getInformesFinales = async (_req: Request, res: Response) => {
 };
 
 export const createInformeFinal = async (req: Request, res: Response) => {
-  const {
-    fecha_informe_final,
-    hora_informe_final,
-    turno_informe_final,
-    molino_informe_final,
-    referencia_informe_final,
-    bulto_informe_final,
-    cantidad_informe_final,
-    horometro_informe_final,
-    observacion_informe_final,
-  } = req.body;
+  const item = req.body;
 
-  const nuevoInformeFinal = await InformeFinal.create({
-    fecha_informe_final,
-    hora_informe_final,
-    turno_informe_final,
-    molino_informe_final,
-    referencia_informe_final,
-    bulto_informe_final,
-    cantidad_informe_final,
-    horometro_informe_final,
-    observacion_informe_final,
-  });
+  const nuevoInformeFinal = await InformeFinal.create(item);
 
   res.status(201).json(nuevoInformeFinal);
 };

@@ -20,25 +20,17 @@ export const getUsuarios = async (_req: Request, res: Response) => {
 };
 
 export const createUsuario = async (req: Request, res: Response) => {
-  const {
-    nombre_usuario,
-    documento_usuario,
-    telefono_usuario,
-    correo_usuario,
-    contrato_usuario,
-    perfil_usuario,
-    contrasena_usuario,
-  } = req.body;
+  const item = req.body;
 
-  const password = await bcrypt.hash(contrasena_usuario, 10);
+  const password = await bcrypt.hash(item.contrasena_usuario, 10);
 
   const nuevoUsuario = await Usuarios.create({
-    nombre_usuario,
-    documento_usuario,
-    telefono_usuario,
-    correo_usuario,
-    contrato_usuario,
-    perfil_usuario,
+    nombre_usuario: item.nombre_usuario,
+    documento_usuario: item.documento_usuario,
+    telefono_usuario: item.telefono_usuario,
+    correo_usuario: item.correo_usuario,
+    contrato_usuario: item.contrato_usuario,
+    perfil_usuario: item.perfil_usuario,
     contrasena_usuario: password,
   });
 
