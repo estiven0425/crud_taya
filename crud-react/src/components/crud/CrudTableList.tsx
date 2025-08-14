@@ -1,13 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Style from "../../styles/crud/table-list.module.scss";
+import Style from "../../styles/crud/crud-table-list.module.scss";
 
 interface TableListProps {
   url: string;
 }
 
-export function TableList({ url }: TableListProps) {
+export function CrudTableList({ url }: TableListProps) {
   const [data, setData] = useState<Record<string, unknown>[]>([]);
   const [selectedItem, setSelectedItem] = useState<Record<
     string,
@@ -173,7 +173,7 @@ export function TableList({ url }: TableListProps) {
     <>
       {loading ? (
         <div
-          className={Style.tableListAlternative}
+          className={Style.crudTableListAlternative}
           role="status"
           aria-live="polite"
         >
@@ -181,7 +181,7 @@ export function TableList({ url }: TableListProps) {
         </div>
       ) : error ? (
         <div
-          className={Style.tableListAlternative}
+          className={Style.crudTableListAlternative}
           role="status"
           aria-live="polite"
         >
@@ -189,8 +189,8 @@ export function TableList({ url }: TableListProps) {
         </div>
       ) : headers.length > 0 ? (
         <>
-          <table className={Style.tableList} role="table">
-            <thead className={Style.thead}>
+          <table className={Style.crudTableList} role="table">
+            <thead className={Style.crudTableListThead}>
               <tr role="row">
                 {headers.map((key) => (
                   <th key={key} role="columnheader" scope="col">
@@ -202,7 +202,7 @@ export function TableList({ url }: TableListProps) {
                 </th>
               </tr>
             </thead>
-            <tbody className={Style.tbody}>
+            <tbody className={Style.crudTableListTbody}>
               {data.map((row, index) => {
                 const isEditing = editMode && selectedItem === row;
                 const isOtherRowDisabled = editMode && selectedItem !== row;
@@ -268,12 +268,12 @@ export function TableList({ url }: TableListProps) {
                         </AnimatePresence>
                       );
                     })}
-                    <td className={Style.buttons} role="cell">
+                    <td className={Style.crudTableListButtons} role="cell">
                       {editMode && selectedItem === row ? (
                         <>
                           <button
                             aria-label="Confirmar edición"
-                            className={Style.confirm}
+                            className={Style.crudTableListConfirm}
                             onClick={confirmEdit}
                             title="Confirmar edición"
                             type="button"
@@ -282,7 +282,7 @@ export function TableList({ url }: TableListProps) {
                           </button>
                           <button
                             aria-label="Cancelar edición"
-                            className={Style.cancel}
+                            className={Style.crudTableListCancel}
                             onClick={cancelEdit}
                             title="Cancelar edición"
                             type="button"
@@ -294,7 +294,7 @@ export function TableList({ url }: TableListProps) {
                         <>
                           <button
                             aria-label="Editar registro"
-                            className={Style.edit}
+                            className={Style.crudTableListEdit}
                             disabled={isOtherRowDisabled}
                             onClick={() => handleEdit(row)}
                             title="Editar registro"
@@ -304,7 +304,7 @@ export function TableList({ url }: TableListProps) {
                           </button>
                           <button
                             aria-label="Eliminar registro"
-                            className={Style.delete}
+                            className={Style.crudTableListDelete}
                             disabled={isOtherRowDisabled}
                             onClick={() => handleDelete(row)}
                             title="Eliminar registro"
@@ -327,7 +327,7 @@ export function TableList({ url }: TableListProps) {
                 aria-describedby="confirm-desc"
                 aria-labelledby="confirm-title"
                 aria-modal="true"
-                className={Style.showConfirm}
+                className={Style.crudTableListShowConfirm}
                 exit={{ opacity: 0 }}
                 initial={{ opacity: 0 }}
                 role="dialog"
@@ -359,7 +359,11 @@ export function TableList({ url }: TableListProps) {
           </AnimatePresence>
         </>
       ) : (
-        <div className={Style.tableListAlternative} role="status" aria-live="polite">
+        <div
+          className={Style.crudTableListAlternative}
+          role="status"
+          aria-live="polite"
+        >
           <h2>No hay datos disponibles</h2>
         </div>
       )}

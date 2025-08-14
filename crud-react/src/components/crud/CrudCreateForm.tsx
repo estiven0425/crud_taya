@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import * as React from "react";
-import Style from "../../styles/crud/create-form.module.scss";
+import Style from "../../styles/crud/crud-create-form.module.scss";
 
 interface TableListProps {
   url: string;
@@ -16,7 +16,7 @@ interface FieldConfig {
   placeholder?: string;
 }
 
-export function CreateForm({ url, name }: TableListProps) {
+export function CrudCreateForm({ url, name }: TableListProps) {
   const [sendStatus, setSendStatus] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -858,11 +858,11 @@ export function CreateForm({ url, name }: TableListProps) {
   return (
     <>
       {sendStatus ? (
-        <section className={Style.createFormAlternative} role="status">
+        <section className={Style.crudCreateFormAlternative} role="status">
           <h2>Registro creado con éxito</h2>
         </section>
       ) : (
-        <form className={Style.createForm} onSubmit={handleSubmit}>
+        <form className={Style.crudCreateForm} onSubmit={handleSubmit}>
           {fields.map(({ name, type, required, placeholder }) => (
             <fieldset key={name}>
               <label htmlFor={name}>{name}</label>

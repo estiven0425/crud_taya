@@ -1,14 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { TableList } from "../../components/crud/TableList.tsx";
-import Style from "../../styles/crud/table.module.scss";
+import { CrudTableList } from "../../components/crud/CrudTableList.tsx";
+import Style from "../../styles/crud/crud-table.module.scss";
 
 interface Information {
   url: string;
   name: string;
 }
 
-export function Table() {
+export function CrudTable() {
   const location = useLocation();
   const navigate = useNavigate();
   const information = location.state as Information;
@@ -21,11 +21,11 @@ export function Table() {
   return (
     <motion.div
       animate={{ opacity: 1 }}
-      className={Style.table}
+      className={Style.crudTable}
       initial={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <header className={Style.header} role="banner">
+      <header className={Style.crudTableHeader} role="banner">
         <button
           aria-label={`Crear nuevo registro de ${name}`}
           onClick={() => redirect()}
@@ -35,10 +35,10 @@ export function Table() {
           Crear {name}
         </button>
       </header>
-      <main className={Style.main} role="main">
-        <TableList url={url} />
+      <main className={Style.crudTableMain} role="main">
+        <CrudTableList url={url} />
       </main>
-      <footer className={Style.footer} role="contentinfo">
+      <footer className={Style.crudTableFooter} role="contentinfo">
         <Link title="Ir a las tablas" to="/crud/list">
           Volver
         </Link>

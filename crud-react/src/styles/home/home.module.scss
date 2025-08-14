@@ -9,7 +9,7 @@
   padding: 5px;
   width: 100%;
 
-  .header {
+  .homeHeader {
     align-items: center;
     //noinspection SassScssResolvedByNameOnly
     border-bottom: 1px solid color(border);
@@ -29,7 +29,7 @@
     }
   }
 
-  .main {
+  .homeMain {
     align-content: center;
     display: flex;
     flex-direction: row;
@@ -58,7 +58,7 @@
     }
   }
 
-  .footer {
+  .homeFooter {
     align-items: center;
     //noinspection SassScssResolvedByNameOnly
     border-top: 1px solid color(border);

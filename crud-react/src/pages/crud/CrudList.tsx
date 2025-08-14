@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import Style from "../../styles/crud/list.module.scss";
+import Style from "../../styles/crud/crud-list.module.scss";
 
-export function List() {
+export function CrudList() {
   const navigate = useNavigate();
 
   const buttons = [
@@ -60,14 +60,14 @@ export function List() {
   return (
     <motion.div
       animate={{ opacity: 1 }}
-      className={Style.list}
+      className={Style.crudList}
       initial={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <header className={Style.header} role="banner">
+      <header className={Style.crudListHeader} role="banner">
         <h1>Tablas de la base de datos</h1>
       </header>
-      <main className={Style.main} role="main">
+      <main className={Style.crudListMain} role="main">
         {buttons.map(({ label, url, name }) => (
           <button
             aria-label={`Ir al CRUD de ${label}`}
@@ -80,7 +80,7 @@ export function List() {
           </button>
         ))}
       </main>
-      <footer className={Style.footer} role="contentinfo">
+      <footer className={Style.crudListFooter} role="contentinfo">
         <Link title="Ir a la página principal" to="/">
           Volver
         </Link>

@@ -1,4 +1,4 @@
-.tableListAlternative {
+.crudTableListAlternative {
   align-content: center;
   height: 100%;
   width: 100%;
@@ -11,12 +11,12 @@
   }
 }
 
-.tableList {
+.crudTableList {
   border-collapse: collapse;
   height: 0;
   width: 100%;
 
-  .thead {
+  .crudTableListThead {
     //noinspection SassScssResolvedByNameOnly
     background-color: color(card);
     backdrop-filter: blur(10px);
@@ -43,7 +43,7 @@
     }
   }
 
-  .tbody {
+  .crudTableListTbody {
     tr {
       //noinspection SassScssResolvedByNameOnly
       border-bottom: 1px solid color(border);
@@ -76,7 +76,7 @@
         }
       }
 
-      .buttons {
+      .crudTableListButtons {
         align-items: center;
         display: flex;
         flex-direction: row;
@@ -85,7 +85,7 @@
         height: 100%;
         justify-content: space-around;
 
-        .edit {
+        .crudTableListEdit {
           //noinspection SassScssResolvedByNameOnly
           @include action(center, edit, 25px, center, 15px, 90px);
           border: none;
@@ -97,14 +97,14 @@
           text-align: center;
         }
 
-        .edit:focus,
-        .edit:hover {
+        .crudTableListEdit:focus,
+        .crudTableListEdit:hover {
           //noinspection SassScssResolvedByNameOnly
           background-color: color(buttons, editHover);
           outline: none;
         }
 
-        .delete {
+        .crudTableListDelete {
           //noinspection SassScssResolvedByNameOnly
           @include action(center, delete, 25px, center, 15px, 90px);
           border: none;
@@ -116,14 +116,14 @@
           text-align: center;
         }
 
-        .delete:focus,
-        .delete:hover {
+        .crudTableListDelete:focus,
+        .crudTableListDelete:hover {
           //noinspection SassScssResolvedByNameOnly
           background-color: color(buttons, deleteHover);
           outline: none;
         }
 
-        .confirm {
+        .crudTableListConfirm {
           //noinspection SassScssResolvedByNameOnly
           @include action(center, confirm, 25px, center, 15px, 90px);
           border: none;
@@ -135,14 +135,14 @@
           text-align: center;
         }
 
-        .confirm:focus,
-        .confirm:hover {
+        .crudTableListConfirm:focus,
+        .crudTableListConfirm:hover {
           //noinspection SassScssResolvedByNameOnly
           background-color: color(buttons, confirmHover);
           outline: none;
         }
 
-        .cancel {
+        .crudTableListCancel {
           //noinspection SassScssResolvedByNameOnly
           @include action(center, cancel, 25px, center, 15px, 90px);
           border: none;
@@ -154,8 +154,8 @@
           text-align: center;
         }
 
-        .cancel:focus,
-        .cancel:hover {
+        .crudTableListCancel:focus,
+        .crudTableListCancel:hover {
           //noinspection SassScssResolvedByNameOnly
           background-color: color(buttons, cancelHover);
           outline: none;
@@ -169,7 +169,7 @@
     }
   }
 }
-.showConfirm {
+.crudTableListShowConfirm {
   align-items: center;
   backdrop-filter: blur(10px);
   display: flex;

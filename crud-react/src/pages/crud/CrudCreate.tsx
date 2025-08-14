@@ -1,14 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CreateForm } from "../../components/crud/CreateForm.tsx";
-import Style from "../../styles/crud/create.module.scss";
+import { CrudCreateForm } from "../../components/crud/CrudCreateForm.tsx";
+import Style from "../../styles/crud/crud-create.module.scss";
 
 interface Information {
   url: string;
   name: string;
 }
 
-export function Create() {
+export function CrudCreate() {
   const location = useLocation();
   const navigate = useNavigate();
   const information = location.state as Information;
@@ -21,17 +21,17 @@ export function Create() {
   return (
     <motion.div
       animate={{ opacity: 1 }}
-      className={Style.create}
+      className={Style.crudCreate}
       initial={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <header className={Style.header} role="banner">
+      <header className={Style.crudCreateHeader} role="banner">
         <h1>Nuevo registro de {name}</h1>
       </header>
-      <main className={Style.main} role="main">
-        <CreateForm url={url} name={name} />
+      <main className={Style.crudCreateMain} role="main">
+        <CrudCreateForm url={url} name={name} />
       </main>
-      <footer className={Style.footer} role="contentinfo">
+      <footer className={Style.crudCreateFooter} role="contentinfo">
         <button
           aria-label={`Volver a la tabla de ${name}`}
           onClick={() => redirect()}

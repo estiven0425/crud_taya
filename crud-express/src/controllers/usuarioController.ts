@@ -19,6 +19,24 @@ export const getUsuarios = async (_req: Request, res: Response) => {
   res.json(usuarios);
 };
 
+export const getFilterUsuarios = async (req: Request, res: Response) => {
+  const { id_perfil } = req.body;
+
+  const usuarios = await Usuarios.findAll({
+    include: [
+      {
+        model: Perfiles,
+        attributes: ["nombre_perfil"],
+        as: "perfil",
+        foreignKey: "perfil_usuario",
+      },
+    ],
+    where: { perfil_usuario: id_perfil, actividad_usuario: true },
+  });
+
+  res.json(usuarios);
+};
+
 export const createUsuario = async (req: Request, res: Response) => {
   const item = req.body;
 

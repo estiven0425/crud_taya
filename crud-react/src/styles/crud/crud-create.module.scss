@@ -1,0 +1,69 @@
+.crudCreate {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+  height: 100%;
+  justify-content: flex-start;
+  padding: 5px;
+  width: 100%;
+
+  .crudCreateHeader {
+    align-items: center;
+    //noinspection SassScssResolvedByNameOnly
+    border-bottom: 1px solid color(border);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 10%;
+    justify-content: center;
+    width: 100%;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+
+  .crudCreateMain {
+    align-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 80%;
+    justify-content: flex-start;
+    overflow: auto;
+    width: 100%;
+  }
+
+  .crudCreateFooter {
+    align-items: center;
+    //noinspection SassScssResolvedByNameOnly
+    border-top: 1px solid color(border);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 10%;
+    justify-content: center;
+    width: 100%;
+
+    button {
+      //noinspection SassScssResolvedByNameOnly
+      @include action(center, cancel, 50px, center, 25px, 150px);
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    button:focus,
+    button:hover {
+      //noinspection SassScssResolvedByNameOnly
+      background-color: color(buttons, cancelHover);
+      outline: none;
+    }
+  }
+}

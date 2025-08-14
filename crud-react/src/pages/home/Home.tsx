@@ -15,18 +15,18 @@ export function Home() {
       initial={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <header className={Style.header} role="banner">
+      <header className={Style.homeHeader} role="banner">
         <h1>CRUD TAYA</h1>
       </header>
-      <main className={Style.main} role="main">
+      <main className={Style.homeMain} role="main">
         <Link title="Ir a manejar la base de datos" to="/crud/list">
           CRUD
         </Link>
-        <Link title="Ir a generar informes" to="/report/option">
+        <Link title="Ir a generar informes" to="/report/list">
           Informes
         </Link>
       </main>
-      <footer className={Style.footer} role="contentinfo">
+      <footer className={Style.homeFooter} role="contentinfo">
         <p>
           © {year} TAYA <span>todos los derechos reservados</span>
         </p>
