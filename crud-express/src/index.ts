@@ -1,6 +1,8 @@
+import { fileURLToPath } from "url";
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
+import path from "path";
 
 import { dbConnection } from "./config/database.js";
 
@@ -28,6 +30,8 @@ import usuarioRoutes from "./routes/usuarioRoutes.js";
 
 const app = express();
 const port = process.env.PORT!;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.resolve(path.dirname(__filename), "..");
 
 app.use(cors());
 app.use(express.json());
@@ -53,6 +57,12 @@ app.use("/registros", registroRoutes);
 app.use("/registros_ap", registroApRoutes);
 app.use("/turnos", turnoRoutes);
 app.use("/usuarios", usuarioRoutes);
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.get(/.*/, (_req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 dbConnection()
   .then(() => {
