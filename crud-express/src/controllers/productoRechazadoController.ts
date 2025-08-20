@@ -12,9 +12,41 @@ export const getProductosRechazados = async (_req: Request, res: Response) => {
 export const createProductoRechazado = async (req: Request, res: Response) => {
   const item = req.body;
 
-  const nuevoProductoRechazado = await ProductosRechazados.create(item);
+  try {
+    const productoExistente = (await ProductosRechazados.findOne({
+      where: {
+        nombre_producto_rechazado: item.nombre_producto_rechazado,
+        retencion_producto_rechazado: item.retencion_producto_rechazado,
+        actividad_producto_rechazado: true,
+      },
+    })) as any;
 
-  res.status(201).json(nuevoProductoRechazado);
+    let nuevoProductoRechazado;
+
+    if (productoExistente) {
+      const cantidadActual =
+        parseFloat(productoExistente.cantidad_producto_rechazado) || 0;
+
+      const cantidadNueva = parseFloat(item.cantidad_producto_rechazado) || 0;
+
+      productoExistente.cantidad_producto_rechazado =
+        cantidadActual + cantidadNueva;
+
+      await productoExistente.save();
+
+      nuevoProductoRechazado = productoExistente;
+    } else {
+      nuevoProductoRechazado = await ProductosRechazados.create({
+        nombre_producto_rechazado: item.nombre_producto_rechazado,
+        cantidad_producto_rechazado: item.cantidad_producto_rechazado,
+        retencion_producto_rechazado: item.retencion_producto_rechazado,
+      });
+    }
+
+    res.status(201).json(nuevoProductoRechazado);
+  } catch (error) {
+    console.error("Error al buscar el producto existente:", error);
+  }
 };
 
 export const updateProductosRechazados = async (

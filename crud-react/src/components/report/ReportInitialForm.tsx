@@ -347,13 +347,13 @@ export function ReportInitialForm() {
     setSendStatus(true);
   };
 
-  const redirectGenerateReport = () => {
+  const redirect = () => {
     navigate("/report/list");
   };
 
   // noinspection PointlessBooleanExpressionJS
   return (
-    <form className={Style.reportInitialForm} onSubmit={sendCreate}>
+    <form className={Style.reportInitialForm} onSubmit={sendCreate} role="form">
       <section>
         <fieldset className={Style.reportInitialFormPrimary}>
           <label htmlFor="supervisor">Supervisor</label>
@@ -361,6 +361,7 @@ export function ReportInitialForm() {
             id="supervisor"
             name="supervisor"
             onChange={(e) => setTitularInformeInicial(e.target.value)}
+            required
             value={titularInformeInicial}
           >
             <option value="" disabled>
@@ -379,6 +380,7 @@ export function ReportInitialForm() {
             id="turno"
             name="turno"
             onChange={(e) => setTurnoInformeInicial(e.target.value)}
+            required
             value={turnoInformeInicial}
           >
             <option value="" disabled>
@@ -398,6 +400,7 @@ export function ReportInitialForm() {
             name="fecha"
             onChange={(e) => setFechaInformeInicial(e.target.value)}
             placeholder="Ingresa una fecha"
+            required
             type="date"
             value={fechaInformeInicial}
           />
@@ -409,6 +412,7 @@ export function ReportInitialForm() {
             name="hora"
             onChange={(e) => setHoraInformeInicial(e.target.value)}
             placeholder="Ingresa una hora"
+            required
             type="time"
             value={horaInformeInicial}
           />
@@ -585,6 +589,7 @@ export function ReportInitialForm() {
               id={`carguero-${index}`}
               name={`carguero-${index}`}
               onChange={(e) => handleCargueroChange(index, e.target.value)}
+              required
               value={cargueroInformeInicial[index] || ""}
             >
               <option value="" disabled>
@@ -611,10 +616,10 @@ export function ReportInitialForm() {
         </fieldset>
       </section>
       <footer className={Style.reportInitialFormFooter}>
-        <button onClick={() => redirectGenerateReport()} type="button">
+        <button onClick={() => redirect()} title="Cancelar creación" type="button">
           Cancelar
         </button>
-        <button type="submit">
+        <button title="Crear nuevo informe inicial" type="submit">
           {loading ? (
             <div className={Style.loader}>Cargando...</div>
           ) : (

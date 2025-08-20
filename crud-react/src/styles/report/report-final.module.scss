@@ -1,4 +1,4 @@
-.reportInitial {
+.reportFinal {
   align-content: flex-start;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   padding: 5px;
   width: 100%;
 
-  .reportInitialHeader {
+  .reportFinalHeader {
     align-items: center;
     //noinspection SassScssResolvedByNameOnly
     border-bottom: 1px solid color(border);
@@ -28,7 +28,7 @@
     }
   }
 
-  .reportInitialMain {
+  .reportFinalMain {
     align-content: flex-start;
     display: flex;
     flex-direction: row;
