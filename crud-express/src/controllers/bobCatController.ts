@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import BobCats from "../models/BobCats.js";
 
 export const getBobCats = async (_req: Request, res: Response) => {

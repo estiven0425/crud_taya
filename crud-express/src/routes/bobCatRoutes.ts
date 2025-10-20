@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getBobCats,
   createBobCats,
   updateBobCats,
   deleteBobCats,
 } from "../controllers/bobCatController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

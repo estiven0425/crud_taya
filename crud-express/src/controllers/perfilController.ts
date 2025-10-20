@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import Perfiles from "../models/Perfiles.js";
 
 export const getPerfiles = async (_req: Request, res: Response) => {

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+
 import { ReportInitialForm } from "../../components/report/ReportInitialForm.tsx";
+
 import Style from "../../styles/report/report-initial.module.scss";
 
 export function ReportInitial() {

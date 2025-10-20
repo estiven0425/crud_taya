@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getTurnos,
   createTurno,
   updateTurnos,
   deleteTurnos,
 } from "../controllers/turnoController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

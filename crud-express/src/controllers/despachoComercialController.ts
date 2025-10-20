@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import DespachoComercial from "../models/DespachoComercial.js";
 
 export const getDespachosComerciales = async (_req: Request, res: Response) => {

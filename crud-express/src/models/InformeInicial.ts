@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize";
+
 import { sequelize } from "../config/database.js";
+
 import Usuarios from "./Usuarios.js";
 
 const InformeInicial = sequelize.define(

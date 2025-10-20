@@ -1,4 +1,3 @@
-import { Router } from "express";
 import {
   getInformesFinales,
   createInformeFinal,
@@ -6,6 +5,8 @@ import {
   updateInformesFinales,
   deleteInformesFinales,
 } from "../controllers/informeFinalController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

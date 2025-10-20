@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+
 import { ReportQualityControlForm } from "../../components/report/ReportQualityControlForm.tsx";
+
 import Style from "../../styles/report/report-quality-control.module.scss";
 
 export function ReportQualityControl() {

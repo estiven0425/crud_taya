@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getDespachos,
   createDespacho,
   updateDespachos,
   deleteDespachos,
 } from "../controllers/despachoController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

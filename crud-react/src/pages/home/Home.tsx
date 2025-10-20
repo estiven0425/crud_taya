@@ -1,6 +1,7 @@
-import { getYear } from "date-fns";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { getYear } from "date-fns";
+
 import Style from "../../styles/home/home.module.scss";
 
 export function Home() {

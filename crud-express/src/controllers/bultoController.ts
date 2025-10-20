@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import Bultos from "../models/Bultos.js";
 
 export const getBultos = async (_req: Request, res: Response) => {

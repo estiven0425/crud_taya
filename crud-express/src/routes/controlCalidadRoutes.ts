@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getControlesCalidad,
   createControlCalidad,
   updateControlesCalidad,
   deleteControlesCalidad,
 } from "../controllers/controlCalidadController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

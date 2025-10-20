@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getRegistrosAp,
   createRegistroAp,
   updateRegistrosAp,
   deleteRegistrosAp,
 } from "../controllers/registroApController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import InventarioAp from "../models/InventarioAp.js";
 
 export const getInventarioAp = async (_req: Request, res: Response) => {

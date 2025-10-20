@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getMolinosAp,
   createMolinoAp,
   updateMolinosAp,
   deleteMolinosAp,
 } from "../controllers/molinoApController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

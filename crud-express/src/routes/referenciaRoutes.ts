@@ -1,4 +1,3 @@
-import { Router } from "express";
 import {
   getReferencias,
   createReferencia,
@@ -6,6 +5,8 @@ import {
   updateAmountReferencias,
   deleteReferencias,
 } from "../controllers/referenciaController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

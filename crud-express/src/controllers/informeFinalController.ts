@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import InformeFinal from "../models/InformeFinal.js";
 
 export const getInformesFinales = async (_req: Request, res: Response) => {

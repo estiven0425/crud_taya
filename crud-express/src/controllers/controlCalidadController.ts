@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import ControlCalidad from "../models/ControlCalidad.js";
 
 export const getControlesCalidad = async (_req: Request, res: Response) => {

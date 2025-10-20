@@ -1,6 +1,8 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+
 import { CrudTableList } from "../../components/crud/CrudTableList.tsx";
+
 import Style from "../../styles/crud/crud-table.module.scss";
 
 interface Information {

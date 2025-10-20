@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getPerfiles,
   createPerfil,
   updatePerfiles,
   deletePerfiles,
 } from "../controllers/perfilController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

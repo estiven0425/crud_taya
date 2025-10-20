@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
+
 import { Crud } from "./pages/crud/Crud.tsx";
 import { CrudCreate } from "./pages/crud/CrudCreate.tsx";
 import { CrudList } from "./pages/crud/CrudList.tsx";
@@ -12,6 +13,7 @@ import { ReportInitial } from "./pages/report/ReportInitial.tsx";
 import { ReportList } from "./pages/report/ReportList.tsx";
 import { ReportNovelty } from "./pages/report/ReportNovelty.tsx";
 import { ReportQualityControl } from "./pages/report/ReportQualityControl.tsx";
+
 import "./styles/main.scss";
 
 createRoot(document.getElementById("root")!).render(

@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import MolinosAp from "../models/MolinosAp.js";
 
 export const getMolinosAp = async (_req: Request, res: Response) => {

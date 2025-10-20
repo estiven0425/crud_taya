@@ -1,8 +1,10 @@
 import { fileURLToPath } from "url";
-import "dotenv/config";
+
 import cors from "cors";
 import express from "express";
 import path from "path";
+
+import "dotenv/config";
 
 import { dbConnection } from "./config/database.js";
 

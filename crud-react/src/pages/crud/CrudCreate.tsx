@@ -1,6 +1,8 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import { CrudCreateForm } from "../../components/crud/CrudCreateForm.tsx";
+
 import Style from "../../styles/crud/crud-create.module.scss";
 
 interface Information {

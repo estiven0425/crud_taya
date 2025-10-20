@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import MateriasPrimas from "../models/MateriasPrimas.js";
 
 export const getMateriasPrimas = async (_req: Request, res: Response) => {

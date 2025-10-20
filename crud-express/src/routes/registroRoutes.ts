@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getRegistros,
   createRegistro,
   updateRegistros,
   deleteRegistros,
 } from "../controllers/registroController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

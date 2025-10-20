@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getMensajes,
   createMensaje,
   updateMensajes,
   deleteMensajes,
 } from "../controllers/mensajeController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

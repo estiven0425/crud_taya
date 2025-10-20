@@ -1,4 +1,3 @@
-import { Router } from "express";
 import {
   getInformesIniciales,
   createInformeInicial,
@@ -6,6 +5,8 @@ import {
   updateInformesIniciales,
   deleteInformesIniciales,
 } from "../controllers/informeInicialController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import Turnos from "../models/Turnos.js";
 
 export const getTurnos = async (_req: Request, res: Response) => {

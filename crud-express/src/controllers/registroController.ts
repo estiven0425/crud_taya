@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import Registros from "../models/Registros.js";
 import Usuarios from "../models/Usuarios.js";
 

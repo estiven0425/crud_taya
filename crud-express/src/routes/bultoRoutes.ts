@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getBultos,
   createBultos,
   updateBultos,
   deleteBultos,
 } from "../controllers/bultoController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

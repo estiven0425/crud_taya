@@ -1,4 +1,3 @@
-import { Router } from "express";
 import {
   getMolinos,
   createMolino,
@@ -6,6 +5,8 @@ import {
   updateHoursMolinos,
   deleteMolinos,
 } from "../controllers/molinoController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

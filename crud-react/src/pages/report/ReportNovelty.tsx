@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+
 import { ReportNoveltyForm } from "../../components/report/ReportNoveltyForm.tsx";
+
 import Style from "../../styles/report/report-novelty.module.scss";
 
 export function ReportNovelty() {

@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getMateriasPrimas,
   createMateriaPrima,
   updateMateriasPrimas,
   deleteMateriasPrimas,
 } from "../controllers/materiaPrimaController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

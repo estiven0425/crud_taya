@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import ProductosRechazados from "../models/ProductosRechazados.js";
 
 export const getProductosRechazados = async (_req: Request, res: Response) => {

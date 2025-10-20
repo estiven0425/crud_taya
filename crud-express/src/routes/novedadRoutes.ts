@@ -1,4 +1,3 @@
-import { Router } from "express";
 import {
   getNovedades,
   createNovedad,
@@ -6,6 +5,8 @@ import {
   updateNovedades,
   deleteNovedades,
 } from "../controllers/novedadController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

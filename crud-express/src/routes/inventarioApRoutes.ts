@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getInventarioAp,
   createInventarioAp,
   updateInventarioAp,
   deleteInventarioAp,
 } from "../controllers/inventarioApController.js";
+
+import { Router } from "express";
 
 const router = Router();
 

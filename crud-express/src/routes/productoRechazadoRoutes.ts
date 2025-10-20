@@ -1,10 +1,11 @@
-import { Router } from "express";
 import {
   getProductosRechazados,
   createProductoRechazado,
   updateProductosRechazados,
   deleteProductosRechazados,
 } from "../controllers/productoRechazadoController.js";
+
+import { Router } from "express";
 
 const router = Router();
 
