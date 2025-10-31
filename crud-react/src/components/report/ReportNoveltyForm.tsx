@@ -33,10 +33,15 @@ export function ReportNoveltyForm() {
     id_bob_cat: number;
     nombre_bob_cat: string;
   };
+  type ParoNovedad = {
+    id_paro: number;
+    nombre_paro: string;
+  };
 
   const [usuario, setUsuario] = useState<UsuarioNovedad[]>([]);
   const [turno, setTurno] = useState<TurnoNovedad[]>([]);
   const [molino, setMolino] = useState<MolinoNovedad[]>([]);
+  const [paro, setParo] = useState<ParoNovedad[]>([]);
   const [referencia, setReferencia] = useState<ReferenciaNovedad[]>([]);
   const [bulto, setBulto] = useState<BultoNovedad[]>([]);
   const [bobCat, setBobCat] = useState<BobCatNovedad[]>([]);
@@ -88,6 +93,7 @@ export function ReportNoveltyForm() {
           referenciaRes,
           bultoRes,
           bobCatRes,
+          paroRes,
         ] = await Promise.all([
           axios.get(`${apiUrl}/usuarios`),
           axios.get(`${apiUrl}/turnos`),
@@ -95,6 +101,7 @@ export function ReportNoveltyForm() {
           axios.get(`${apiUrl}/referencias`),
           axios.get(`${apiUrl}/bultos`),
           axios.get(`${apiUrl}/bob_cats`),
+          axios.get(`${apiUrl}/paros`),
         ]);
 
         setUsuario(usuarioRes.data);
@@ -103,6 +110,7 @@ export function ReportNoveltyForm() {
         setReferencia(referenciaRes.data);
         setBulto(bultoRes.data);
         setBobCat(bobCatRes.data);
+        setParo(paroRes.data);
       } catch (error) {
         console.error("Error al obtener datos:", error);
       }
@@ -391,20 +399,11 @@ export function ReportNoveltyForm() {
                   <option value="" disabled>
                     Selecciona un motivo de paro
                   </option>
-                  <option value="Sostenimiento general">
-                    Sostenimiento general
-                  </option>
-                  <option value="Mecánico">Mecánico</option>
-                  <option value="Eléctrico">Eléctrico</option>
-                  <option value="Corte de energía">Corte de energía</option>
-                  <option value="Materia prima">Materia prima</option>
-                  <option value="Empaque">Empaque</option>
-                  <option value="Guijos">Guijos</option>
-                  <option value="Personal">Personal</option>
-                  <option value="Programado">Programado</option>
-                  <option value="Bodega">Bodega</option>
-                  <option value="Apagado">Apagado</option>
-                  <option value="Otro">Otro</option>
+                  {paro.map((paro) => (
+                    <option key={paro.id_paro} value={paro.nombre_paro}>
+                      {paro.nombre_paro}
+                    </option>
+                  ))}
                 </select>
               </fieldset>
             </>

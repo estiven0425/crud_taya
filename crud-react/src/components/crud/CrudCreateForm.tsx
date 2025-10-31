@@ -827,6 +827,14 @@ export function CrudCreateForm({ url, name }: TableListProps) {
         placeholder: "Contraseña del usuario",
       },
     ],
+    paros: [
+      {
+        name: "nombre_paro",
+        type: "text",
+        required: true,
+        placeholder: "Nombre del tipo de paro",
+      },
+    ],
   };
 
   const fields = formFieldsByTable[url] || [];

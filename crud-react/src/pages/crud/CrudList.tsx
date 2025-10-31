@@ -52,6 +52,7 @@ export function CrudList() {
     { label: "Registros AP", name: "registro AP", url: "registros_ap" },
     { label: "Turnos", name: "turno", url: "turnos" },
     { label: "Usuarios", name: "usuario", url: "usuarios" },
+    { label: "Tipos de paro", name: "tipo de paro", url: "paros" },
   ];
 
   const redirect = (url: string, name: string): void => {
